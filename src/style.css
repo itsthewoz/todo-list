@@ -1,0 +1,87 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+
+  --component-padding: 2rem;
+}
+
+:root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  border: 3px solid blue;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 6rem 1fr;
+}
+
+header {
+  background-color: goldenrod;
+  grid-area: span 1 / span 2;
+}
+
+main {
+  height: 100vh;
+  background-color: whitesmoke;
+  padding: var(--component-padding);
+}
+
+.leftSidebar {
+  background-color: lightblue;
+  padding: var(--component-padding);
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  padding: 0;
+  margin-bottom: var(--component-padding);
+}
+
+li {
+  margin-top: 0.75rem;
+}
+
+li::marker {
+  content: none;
+}
+
+.createNew {
+  margin-top: var(--component-padding);
+}
+
+form > * {
+  display: block;
+}
+
+dialog {
+  position: relative;
+  top: 30%;
+  margin: 0 auto;
+  height: 400px;
+  width: 600px;
+}
+
+.taskListWrapper > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkcyan;
+  margin-top: 1.25rem;
+  padding: 0.75rem;
+}
+
+.addProject > button {
+  margin-top: 0.75rem;
+}
+/* .taskListWrapper > div > * {
+  display: inline;
+} */
