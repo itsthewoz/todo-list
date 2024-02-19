@@ -79,9 +79,13 @@ dialog {
   padding: 0.75rem;
 }
 
-.addProject > button {
-  margin-top: 0.75rem;
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
 }
-/* .taskListWrapper > div > * {
-  display: inline;
-} */
+
+.currentProject > a {
+  border-bottom: 0.15rem solid black;
+}

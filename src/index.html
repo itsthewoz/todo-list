@@ -13,19 +13,22 @@
         <button type="button" class="createNew">Create</button>
         <section class="main-nav">
           <ul>
-            <li>Inbox</li>
-            <li>Today</li>
-            <li>This Week</li>
+            <li>
+              <a href="">Inbox</a>
+            </li>
+            <li><a href="">Today</a></li>
+            <li><a href="">This Week</a></li>
           </ul>
         </section>
         <section class="projects-nav">
           <h3>Projects</h3>
           <ul>
-            <li>Projects</li>
-            <li class="addProject">
-              <button type="button">+ Add Project</button>
+            <li class="currentProject">
+              <a href="">Project</a>
+              <button type="button" class="deleteProject">Del</button>
             </li>
           </ul>
+          <button class="addProject" type="button">+ Add Project</button>
         </section>
       </nav>
     </div>
@@ -35,20 +38,31 @@
           <h2>Add</h2>
           <button type="button" class="closeModal">Close</button>
         </header>
-        <form action="">
+        <form action="" id="newTaskForm">
           <label for="title">Title:</label>
-          <input type="text" name="title" id="title" />
+          <input type="text" name="title" id="title" required />
           <label for="details">Details:</label>
           <textarea name="details" id="details" cols="60" rows="4"></textarea>
           <label for="date">Due Date:</label>
-          <input type="date" name="date" id="date" />
+          <input type="date" name="date" id="date" required />
           <label for="flag">Priority</label>
           <select name="flag" id="flag">
             <option value="low" selected>Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
-          <button type="button" class="addTodoButton">Add To Do</button>
+          <button type="submit" class="addTodoButton">Add To Do</button>
+        </form>
+      </dialog>
+      <dialog class="projectModal">
+        <header>
+          <h2>Create New Project</h2>
+          <button type="button" class="projectCloseModal">Close</button>
+        </header>
+        <form action="" id="newProjectForm">
+          <label for="projectName">Project Title:</label>
+          <input type="text" name="projectName" id="projectName" required />
+          <button type="submit">Create New Project</button>
         </form>
       </dialog>
       <div class="taskListWrapper">Task</div>
