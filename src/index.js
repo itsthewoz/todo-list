@@ -1,4 +1,5 @@
 import './style.css';
+import { createTask } from './scripts/ui';
 
 const modalCloseButton = document.querySelector('.closeModal');
 const dialogModal = document.querySelector('.addTodo');
@@ -11,7 +12,6 @@ const formDate = document.querySelector('#date');
 const formTitle = document.querySelector('#title');
 const formDetails = document.querySelector('#details');
 const formFlag = document.querySelector('#flag');
-const taskList = document.querySelector('.taskListWrapper');
 const addProjectButton = document.querySelector('.addProject');
 const taskForm = document.querySelector('#newTaskForm');
 const projectsUl = document.querySelector('.projects-nav > ul');
@@ -113,42 +113,42 @@ function populateCurrentTask(array) {
   createTask(title, details, dueDate, flag);
 }
 
-function createTask(title, details, dueDate, flag) {
-  const taskDiv = document.createElement('div');
+// function createTask(title, details, dueDate, flag) {
+//   const taskDiv = document.createElement('div');
 
-  const taskCheckbox = document.createElement('input');
-  taskCheckbox.type = 'checkbox';
-  taskCheckbox.id = 'taskCheckbox';
-  taskDiv.appendChild(taskCheckbox);
+//   const taskCheckbox = document.createElement('input');
+//   taskCheckbox.type = 'checkbox';
+//   taskCheckbox.id = 'taskCheckbox';
+//   taskDiv.appendChild(taskCheckbox);
 
-  const taskTitle = document.createElement('h4');
-  taskTitle.textContent = title;
-  taskDiv.appendChild(taskTitle);
+//   const taskTitle = document.createElement('h4');
+//   taskTitle.textContent = title;
+//   taskDiv.appendChild(taskTitle);
 
-  if (details) {
-    const taskDetails = document.createElement('p');
-    taskDetails.textContent = details;
-    taskDiv.appendChild(taskDetails);
-  }
+//   if (details) {
+//     const taskDetails = document.createElement('p');
+//     taskDetails.textContent = details;
+//     taskDiv.appendChild(taskDetails);
+//   }
 
-  const taskDueDate = document.createElement('p');
-  taskDueDate.textContent = dueDate;
-  taskDiv.appendChild(taskDueDate);
+//   const taskDueDate = document.createElement('p');
+//   taskDueDate.textContent = dueDate;
+//   taskDiv.appendChild(taskDueDate);
 
-  const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  taskDiv.appendChild(editButton);
-  editButton.classList.add('editButton');
+//   const editButton = document.createElement('button');
+//   editButton.textContent = 'Edit';
+//   taskDiv.appendChild(editButton);
+//   editButton.classList.add('editButton');
 
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  taskDiv.appendChild(deleteButton);
-  deleteButton.classList.add('deleteButton');
+//   const deleteButton = document.createElement('button');
+//   deleteButton.textContent = 'Delete';
+//   taskDiv.appendChild(deleteButton);
+//   deleteButton.classList.add('deleteButton');
 
-  taskList.appendChild(taskDiv);
-  taskDiv.classList.add(flag);
-  taskDiv.dataset.id = `${dataPosition}`;
-}
+//   taskList.appendChild(taskDiv);
+//   taskDiv.classList.add(flag);
+//   taskDiv.dataset.id = `${dataPosition}`;
+// }
 
 function createProject(projectName) {
   const projectsLi = document.createElement('li');
