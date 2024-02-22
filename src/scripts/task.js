@@ -1,9 +1,14 @@
+import { format } from 'date-fns';
+
 class Task {
-  constructor(title, details, dueDate, priority) {
+  static taskId = 0;
+
+  constructor(title, details, date, priority) {
     this.title = title;
     this.details = details;
-    this.date = dueDate;
+    this.date = date;
     this.priority = priority;
+    this.id = Task.taskId++;
   }
 
   set setTitle(title) {
@@ -28,7 +33,10 @@ class Task {
 
   get getDate() {
     return this.date;
-    // format?
+  }
+
+  get getDateFormatted() {
+    return format(this.date, 'yyyy, M, d');
   }
 
   set setPriority(priority) {
@@ -38,4 +46,11 @@ class Task {
   get getPriority() {
     return this.priority;
   }
+
+  get getId() {
+    return Number.toString(this.id);
+  }
 }
+
+export { Task };
+//use counter value as hidden id to delete task and not have to reform a new array

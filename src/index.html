@@ -13,21 +13,16 @@
         <button type="button" class="createNew">Create</button>
         <section class="main-nav">
           <ul>
-            <li>
+            <li class="currentProject" id="inbox">
               <a href="">Inbox</a>
             </li>
-            <li><a href="">Today</a></li>
-            <li><a href="">This Week</a></li>
+            <li id="today"><a href="">Today</a></li>
+            <li id="thisweek"><a href="">This Week</a></li>
           </ul>
         </section>
         <section class="projects-nav">
           <h3>Projects</h3>
-          <ul>
-            <li class="currentProject">
-              <a href="">Project</a>
-              <button type="button" class="deleteProject">Del</button>
-            </li>
-          </ul>
+          <ul></ul>
           <button class="addProject" type="button">+ Add Project</button>
         </section>
       </nav>
@@ -65,7 +60,8 @@
           <button type="submit">Create New Project</button>
         </form>
       </dialog>
-      <div class="taskListWrapper">Task</div>
+      <h2 class="mainHeader">Inbox</h2>
+      <div class="taskListWrapper"></div>
     </main>
   </body>
 </html>
