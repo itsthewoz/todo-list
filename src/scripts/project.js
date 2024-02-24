@@ -1,12 +1,7 @@
-import {
-  isThisWeek,
-  isToday,
-  compareAsc,
-  differenceInCalendarDays,
-} from 'date-fns';
+import { isThisWeek, isToday, compareAsc } from 'date-fns';
 class Project {
   constructor(name) {
-    this.name = name.toLowerCase().replace(/\s+/g, '');
+    this.name = name.replace(/\s+/g, '-');
     this.tasks = [];
   }
 
@@ -52,12 +47,3 @@ class Project {
 }
 
 export { Project };
-
-//for later
-//return (
-//   isThisWeek(new Date(task.getDateFormatted)) &&
-//   differenceInCalendarDays(
-//     new Date(task.getDateFormatted),
-//     new Date()
-//   ) >= 0
-// );

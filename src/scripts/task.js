@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { UiHandler } from './uiHandler';
 
 class Task {
   static taskId = 0;
@@ -53,4 +54,3 @@ class Task {
 }
 
 export { Task };
-//use counter value as hidden id to delete task and not have to reform a new array

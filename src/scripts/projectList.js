@@ -1,5 +1,3 @@
-import { Project } from './project';
-
 class ProjectList {
   constructor() {
     this.projects = [];
@@ -16,7 +14,16 @@ class ProjectList {
   getProject(projectName) {
     return this.projects.find(
       (project) =>
-        project.getName === projectName.toLowerCase().replace(/\s+/g, '')
+        project.getName.toLowerCase() ===
+        projectName.toLowerCase().replace(/\s+/g, '-')
+    );
+  }
+
+  checkForProject(projectName) {
+    return this.projects.some(
+      (project) =>
+        project.getName.toLowerCase() ===
+        projectName.toLowerCase().replace(/\s+/g, '-')
     );
   }
 
@@ -26,12 +33,3 @@ class ProjectList {
 }
 
 export { ProjectList };
-
-// handle deleting projects
-
-//get project of task to delete
-//project -> find task -> delete task
-
-//currentProjectList.getProjects.forEach(project => {
-//project.getTodaysTasks.forEach(task => { populateCurrentTask(task) })
-//})
