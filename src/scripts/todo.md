@@ -1,59 +1,25 @@
-TODO: Edit button functionality
-TODO: Local storage system
+Expand Details Func
 
-TODO: Style everything
+Edit Button Func
 
-TODO: Logic
+- Open a dialog with inputs containing current values, on cancel -> use old values, on sumbit -> use new values
+- repopulate the selected project
+- will need to find the localtion of the selected task using its current project and id or name
+  -push tasks to project on localSave
 
-Edit Button ->
-on press -> convert fields to editible fields
+Expand Details Func
 
-- Title -> input text
-- Date -> input date
-- Flag -> options flag
-- description -> textfield
+- on div/details click
+- check if details is not empty
+- if not then -> create div container
+- containing details
 
-On save/enter ->
-
-- call respective task functions
-- update text content
-- update priority class
-
-edit.addeventlistener('click', () => {
-
-})
-
-taskEditTitle() {
-const targtEl = doc.query('e.target.parentEl > h4');
-targtEL.textCont = '';
-
-}
-
-//store array of projectList ->
-//store project as key + projects array as value
-// forEach stored project of projectList ->
-
-- get key that matches project name
-- for each value of key run add task
-
-//when creating a project ->
-
-- set localStorage to key(project) with value of getTasks
-
-//when creating task
-
-- target projectName as key
-- update the array with getTasks
-
-//when deleting a project
-
-- localStorage.removeItem(projectName)
-
-//when deleting a task
-
-- target projectName as key
-- update the array with getTasks
-
-LOGIC:
-
-- must grab initial inbox key and populate from said key on page load
+taskForm
+projectForm
+projectFormInput
+addProjectButton
+projectCloseModal
+modalCloseButton
+createNewButton
+dialogModal
+projectModal

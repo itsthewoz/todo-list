@@ -4,6 +4,7 @@ import { ProjectList } from './scripts/projectList';
 import { Task } from './scripts/task';
 import { UiHandler } from './scripts/uiHandler';
 import { Storage } from './scripts/localSave';
+import { createTask } from './scripts/domElements';
 
 // to recreate tasks -> loop over json file objects passing them into a new Class()
 // must add project identifier

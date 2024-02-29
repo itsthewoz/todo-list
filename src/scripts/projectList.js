@@ -11,6 +11,10 @@ class ProjectList {
     return this.projects;
   }
 
+  get getLastProject() {
+    return this.projects[this.projects.length - 1];
+  }
+
   getProject(projectName) {
     return this.projects.find(
       (project) =>
@@ -28,7 +32,11 @@ class ProjectList {
   }
 
   deleteProject(project) {
-    this.projects.splice(this.projects.indexOf(project), 1);
+    this.projects.splice(
+      this.projects.map((item) => item.name).indexOf(project),
+      1
+    );
+    console.log(this.projects);
   }
 }
 

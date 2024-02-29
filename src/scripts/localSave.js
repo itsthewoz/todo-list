@@ -1,10 +1,9 @@
 import { Project } from './project';
-import { ProjectList } from './projectList';
 import { Task } from './task';
 import { currentProjectList } from './uiHandler';
 
 class Storage {
-  static storeProject() {
+  static storeProjects() {
     currentProjectList.getProjects.forEach((project) => {
       localStorage.setItem(
         project.getName.toLowerCase(),
@@ -13,18 +12,23 @@ class Storage {
     });
   }
 
-  static storeProjectList() {
+  static storeProject() {
+    const lastProject = currentProjectList.getLastProject;
     localStorage.setItem(
-      'currentProjectList',
-      JSON.stringify(currentProjectList.getProjects)
+      lastProject.getName.toLowerCase(),
+      JSON.stringify(lastProject.getTasks)
     );
   }
 
   static getProjectList() {
-    return JSON.parse(localStorage.getItem('currentProjectList'));
+    return JSON.parse(localStorage.getItem('orderOfProjects'));
   }
 
-  static storeTask(projectName) {
+  static deleteProject(project) {
+    localStorage.removeItem(project);
+  }
+
+  static taskUpdate(projectName) {
     const targetProject = currentProjectList.getProject(projectName).getTasks;
 
     localStorage.setItem(
@@ -37,16 +41,31 @@ class Storage {
     return JSON.parse(localStorage.getItem(projectName));
   }
 
-  static getListOfKeys() {
-    for (let i = 0; i < localStorage.length; i++) {
-      console.log(localStorage.key(i));
-    }
+  static htmlProjectsList() {
+    const projectsLi = document.querySelectorAll('.projects-nav a');
+    const projects = [];
+
+    projectsLi.forEach((a) => projects.push(a.textContent));
+
+    localStorage.setItem('orderOfProjects', JSON.stringify(projects));
   }
 
   static initAddProjects() {
     for (let i = 0; i < localStorage.length; i++) {
-      if (localStorage.key(i) !== 'currentProjectList') {
+      if (localStorage.key(i) !== 'orderOfProjects') {
         currentProjectList.addProject(new Project(localStorage.key(i)));
+        for (
+          let j = 0;
+          j < JSON.parse(localStorage.getItem(localStorage.key(i))).length;
+          j++
+        ) {
+          const { title, details, date, priority } = JSON.parse(
+            localStorage.getItem(localStorage.key(i))
+          )[j];
+          currentProjectList
+            .getProject(localStorage.key(i))
+            .addTask(new Task(title, details, date, priority));
+        }
       }
     }
   }
@@ -54,24 +73,4 @@ class Storage {
 
 export { Storage };
 
-//if localStorage > 0
-// On Load ->
-// Get list of keys
-// For Each Key ->
-//  - currentProjectList.addProject(new Project(key))
-//  - For Each Task ->
-//    - currentProjectList.getProject(key).addTask(new Task())
-
-//else if ->
-// storage.storeProjectList();
-
-//get tasks from target project
-
-//inbox needs to not reset
-
-//populateSelectedProject(project)
-// const tasks = getTasksFromProject(e.target.textContent.toLowerCase())
-// tasks.forEach(task => {this.populateCurrentTask(task, e.target.textContent)})
-// currentProjectList.getProject(project).getTasks.forEach((task) => {
-//   this.populateCurrentTask(task, project);
-// });
+//TODO: edit functionality!
