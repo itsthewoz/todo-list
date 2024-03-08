@@ -8,41 +8,53 @@
 }
 
 :root {
-  width: 100vw;
+  max-width: 1500px;
+  margin: auto;
   height: 100vh;
   overflow: hidden;
-  border: 3px solid blue;
+  background-color: whitesmoke;
 }
 
 a,
 a:link,
 a:visited {
   text-decoration: none;
-  color: black;
+  color: #e0f2fe;
   text-transform: capitalize;
 }
 
 body {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 6rem 1fr;
+  grid-template-rows: 3rem 1fr;
 }
 
 header {
-  background-color: goldenrod;
-  grid-area: span 1 / span 2;
+  background-color: #d8e9e4;
+  color: black;
+  grid-area: 1 / 2;
+  border-radius: 0 0.65rem 0 0;
 }
 
 main {
   height: 100vh;
-  background-color: whitesmoke;
+  background-color: #d8e9e4;
   padding: var(--component-padding);
+  border-radius: 0 0 0.65rem 0;
+}
+
+h1 {
+  padding-left: 2rem;
+  padding-top: 1rem;
 }
 
 .leftSidebar {
-  background-color: lightblue;
+  background-color: #075985;
   padding: var(--component-padding);
   height: 100vh;
+  color: #e0f2fe;
+  grid-area: span 2 / span 1;
+  border-radius: 0.65rem 0 0 0.65rem;
 }
 
 .hidden {
@@ -66,6 +78,24 @@ li::marker {
   margin-top: var(--component-padding);
 }
 
+.createNew > img,
+.addProject > img {
+  padding-right: 0.5rem;
+  padding-left: 1rem;
+}
+
+.createNew,
+.addProject {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  color: white;
+}
+
 form > * {
   display: block;
 }
@@ -78,13 +108,40 @@ dialog {
   width: 600px;
 }
 
-.taskListWrapper > div {
+div[data-project] {
+  background-color: #d8e9e4;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: darkcyan;
-  margin-top: 1.25rem;
+  /* margin-top: 0.5rem; */
   padding: 0.75rem;
+  /* border-radius: 0.2rem; */
+}
+
+.taskListWrapper > div::after {
+  content: '';
+  display: block;
+  border-bottom: 0.1rem solid black;
+  width: 97%;
+  margin: auto;
+}
+
+div[data-project] > h4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 30%;
+}
+
+div[data-project] > div {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+div[data-project] > div > button:last-of-type {
+  margin-left: 0.5rem;
+}
+
+div[data-project] > p:last-of-type {
+  margin-left: auto;
 }
 
 .currentProject > a {
@@ -93,4 +150,32 @@ dialog {
 
 .mainHeader {
   text-transform: capitalize;
+  color: #001e1d;
+}
+
+.details {
+  cursor: pointer;
+  overflow: hidden;
+  min-width: 3rem;
+  max-width: 3rem;
+  text-overflow: ellipsis;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.detailsDropDown {
+  background-color: rgb(0, 97, 97);
+  width: 97%;
+  color: white;
+  margin-left: auto;
+  padding: 0.75rem;
+  border-radius: 0.2rem;
+}
+
+.medium {
+  /* border-left: 0.5rem solid #fbcd89; */
+}
+
+.high {
+  background-color: #e57676;
 }

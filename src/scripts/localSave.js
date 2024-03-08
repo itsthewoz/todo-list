@@ -72,5 +72,3 @@ class Storage {
 }
 
 export { Storage };
-
-//TODO: edit functionality!

@@ -1,7 +1,9 @@
 import { UiHandler } from './uiHandler';
-
 class CreateElement {
-  static dropdown() {}
+  static dropdown(e, details, title, dueDate, priority, projectName) {
+    const detailModal = document.querySelector('#detailModal');
+    dropDown.showModal();
+  }
 
   static element(elementType, className, text, appendTo) {
     const element = document.createElement(elementType);
@@ -18,38 +20,61 @@ class CreateElement {
   static createTask(title, details, dueDate, priority, id, projectName) {
     const taskList = document.querySelector('.taskListWrapper');
 
+    const wrapperDiv = document.createElement('div');
+    const buttonWrapperDiv = document.createElement('div');
     const taskDiv = document.createElement('div');
 
-    const checkBBox = this.element('input', false, '', taskDiv);
-    checkBBox.type = 'checkbox';
-    checkBBox.id = 'taskCheckBox';
-    checkBBox.addEventListener('click', (e) => {
+    const checkBox = this.element('input', false, '', taskDiv);
+    checkBox.type = 'checkbox';
+    checkBox.id = 'taskCheckBox';
+    checkBox.addEventListener('click', (e) => {
       setTimeout(() => {
         UiHandler.deleteTaskFromProject(e);
       }, 250);
     });
 
-    const taskTTitle = this.element('h4', false, title, taskDiv);
-    const taskDDetails = this.element('p', false, details, taskDiv);
-    const taskDDueDate = this.element('p', false, dueDate, taskDiv);
-    const editBButton = this.element('button', 'editButton', 'Edit', taskDiv);
+    const taskTitle = this.element('h4', false, title, taskDiv);
+    const taskDetails = this.element('p', 'details', details, taskDiv);
+
+    const taskDueDate = this.element('p', false, dueDate, taskDiv);
+
+    const editButton = this.element(
+      'button',
+      'editButton',
+      'Edit',
+      buttonWrapperDiv
+    );
     //TODO: Create this
-    editBButton.addEventListener('click', (e) => {
+    editButton.addEventListener('click', (e) => {
       //priority
       UiHandler.editPriority(taskDiv, e.target, priority);
     });
 
-    const deleteBButton = this.element(
+    const deleteButton = this.element(
       'button',
       'deleteButton',
       'delete',
-      taskDiv
+      buttonWrapperDiv
     );
-    deleteBButton.addEventListener('click', (e) => {
+    deleteButton.addEventListener('click', (e) => {
       UiHandler.deleteTaskFromProject(e);
     });
+    taskDiv.appendChild(buttonWrapperDiv);
+    wrapperDiv.appendChild(taskDiv);
 
-    taskList.appendChild(taskDiv);
+    const detailsDropDown = this.element(
+      'p',
+      'detailsDropDown',
+      details,
+      wrapperDiv
+    );
+    detailsDropDown.classList.add('hidden');
+
+    taskDetails.addEventListener('click', (e) => {
+      e.target.parentElement.parentElement.lastChild.classList.toggle('hidden');
+    });
+
+    taskList.appendChild(wrapperDiv);
     taskDiv.classList.add(priority);
     taskDiv.dataset.id = id;
     taskDiv.dataset.project = projectName;
