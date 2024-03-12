@@ -20,7 +20,7 @@ class Task {
   }
 
   set setDetails(details) {
-    this.retails = details;
+    this.details = details;
   }
 
   get getDetails() {
@@ -47,8 +47,12 @@ class Task {
     return this.priority;
   }
 
+  set setId(id) {
+    this.id = Number(id);
+  }
+
   get getId() {
-    return Number.toString(this.id);
+    return Number(this.id);
   }
 }
 

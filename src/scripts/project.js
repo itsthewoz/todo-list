@@ -22,7 +22,7 @@ class Project {
   }
 
   getTask(taskId) {
-    return this.tasks.find((task) => task.getId === Number.toString(taskId));
+    return this.tasks.find((task) => task.getId === Number(taskId));
   }
 
   get getLastTask() {

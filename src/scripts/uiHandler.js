@@ -218,13 +218,13 @@ class UiHandler {
       );
   }
 
-  static deleteTaskFromProject(e) {
-    const targetProject = e.target.parentElement.dataset.project;
-    const targetTask = e.target.parentElement.dataset.id;
+  static deleteTaskFromProject(targProject, targTask, targDelete) {
+    const targetProject = targProject;
+    const targetTask = targTask;
 
     currentProjectList.getProject(targetProject).deleteTask(targetTask);
     Storage.taskUpdate(targetProject);
-    e.target.parentElement.parentElement.remove();
+    targDelete.remove();
   }
 
   static checkValidity() {
@@ -282,60 +282,6 @@ class UiHandler {
       this.checkValidity();
     });
   }
-
-  //TODO: finish
-  static editTaskHandler(elementToappend) {
-    const textInput = document.createElement('textarea');
-  }
-
-  static editInput(
-    titleElement,
-    elementToCreate,
-    inputType,
-    inputId,
-    elementToAppend
-  ) {
-    const input = document.createElement(elementToCreate);
-    input.type = inputType;
-    input.id = inputId;
-    input.value = titleElement.textContent;
-
-    titleElement.textContent = '';
-
-    elementToAppend.appendChild(input);
-  }
-
-  static editPriority(taskDiv, e, priority) {
-    const selectLabel = document.createElement('label');
-    selectLabel.for = 'priority';
-
-    const select = document.createElement('select');
-    select.name = 'priority';
-    select.id = 'priority';
-
-    const optionLow = document.createElement('option');
-    optionLow.value = 'low';
-    optionLow.textContent = 'Low';
-
-    const optionMed = document.createElement('option');
-    optionMed.value = 'medium';
-    optionMed.textContent = 'Medium';
-
-    const optionHigh = document.createElement('option');
-    optionHigh.value = 'high';
-    optionHigh.textContent = 'High';
-
-    select.appendChild(optionLow);
-    select.appendChild(optionMed);
-    select.appendChild(optionHigh);
-
-    select.value = priority;
-
-    taskDiv.insertBefore(selectLabel, e);
-    taskDiv.insertBefore(select, e);
-  }
-
-  static editDetails() {}
 }
 
 export { UiHandler, currentProjectList };

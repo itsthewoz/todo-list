@@ -36,7 +36,6 @@ class ProjectList {
       this.projects.map((item) => item.name).indexOf(project),
       1
     );
-    console.log(this.projects);
   }
 }
 
